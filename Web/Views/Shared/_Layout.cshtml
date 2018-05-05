@@ -20,20 +20,12 @@
       </button>
       @Html.ActionLink("Web", "Index", "Home", null, new { @class = "navbar-brand" })
     </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-      </ul>
-    </div>
   </div>
 </div>
 <div class="container body-content">
   @RenderBody()
   <hr />
   <footer>
-    <p>&copy; 2016 - Web</p>
   </footer>
 </div>
 

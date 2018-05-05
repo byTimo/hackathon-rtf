@@ -2,8 +2,9 @@
 {
     public class ColumnInfo
     {
-        public string Name { get; }
-        public string TableName { get; }
+        public string Name { get; set; }
+        
+        public string TableName { get; set; }
 
         public ColumnInfo(string name, string tableName)
         {
