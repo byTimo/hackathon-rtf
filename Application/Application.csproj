@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColumnDependencySeracher.cs" />
     <Compile Include="ColumnInfo.cs" />
     <Compile Include="IColumnDependencySeracher.cs" />
     <Compile Include="ITableColumnSearcher.cs" />

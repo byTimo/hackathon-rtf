@@ -1,13 +1,37 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style>
 
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+		fill: #fff;
+		stroke: steelblue;
+		stroke-width: 1.5px;
+	}
+
+	.node text {
+		font: 10px sans-serif;
+	}
+
+	.link {
+		fill: none;
+		stroke: #ccc;
+		stroke-width: 1.5px;
+	}
+
+</style>
+<script src="//d3js.org/d3.v3.min.js"></script>
 <div class="jumbotron">
-    <textarea id="query_input"></textarea>
+    <textarea id="query_input" style="height: 250px; resize: none; width: 100%; max-width: unset;"></textarea>
     <br/>
     <button id="send_button">
         Отправить
     </button>
+    
 </div>
 <div id="out">
 </div>

@@ -9,18 +9,18 @@ namespace Application
 {
     public class TableColumnSearcher : ITableColumnSearcher
     {
-        private static readonly TGetTableColumn lol = new TGetTableColumn(EDbVendor.dbvoracle)
-        {
-            showSummary = true,
-            showColumnLocation = true,
-            linkOrphanColumnToFirstTable = true,
-            showIndex = true,
-            showDatatype = true,
-            isConsole = false
-        };
-        
         public Dictionary<string, HashSet<string>> Search(string query)
         {
+            var lol = new TGetTableColumn(EDbVendor.dbvoracle)
+            {
+                showSummary = true,
+                showColumnLocation = true,
+                linkOrphanColumnToFirstTable = true,
+                showIndex = true,
+                showDatatype = true,
+                isConsole = false
+            };
+            
             lol.runText(query);
             var info = lol.outList.ToString();
 
