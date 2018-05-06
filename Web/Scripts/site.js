@@ -110,7 +110,7 @@ function init(width, height) {
             return [d.y, d.x];
         });
 
-    svg = d3.select("body").append("svg")
+    svg = d3.select("#out").append("svg")
         .attr("width", "100%")
         .attr("height", height + margin.top + margin.bottom)
         .append("g")

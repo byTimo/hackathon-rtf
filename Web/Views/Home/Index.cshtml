@@ -25,13 +25,21 @@
 
 </style>
 <script src="//d3js.org/d3.v3.min.js"></script>
-<div class="jumbotron">
-    <textarea id="query_input" style="height: 250px; resize: none; width: 100%; max-width: unset;"></textarea>
-    <br/>
-    <button id="send_button">
-        Отправить
-    </button>
-    
-</div>
-<div id="out">
-</div>
+<table class="t_container">
+	<tbody>
+	<tr>
+		<td rowspan="2" class="leftSide">
+			<button id="send_button" class="btn btn-primary btn-lg" style="margin-bottom: 5px">
+				Analyze
+			</button>
+			<br/>
+			<textarea class="form-control" id="query_input" style="height: 75%; resize: none; width: 100%; max-width: unset;"></textarea>
+		</td>
+		<td>
+			<div id="out"></div>
+		</td>
+	</tr>
+	<tr>
+	</tr>
+	</tbody>
+</table>
