@@ -69,7 +69,8 @@ function getDeps(key, array) {
     return array.map(function (x) {
         childrenCount++;
         return {
-            "name": x.TableName+ " --> " + x.Name,
+            "name": x.Name,
+            "tableName": x.TableName,
             "parent": key
         }
     })
@@ -95,36 +96,11 @@ function drawGraph(data) {
         "children": getColumns(deps)
     };
     
-    
-    var tree = [{
-        "name": "Top Level",
-        "parent": "null",
-        "children": [
-            {
-                "name": "Level 2: A",
-                "parent": "Top Level",
-                "children": [
-                    {
-                        "name": "Son of A",
-                        "parent": "Level 2: A"
-                    },
-                    {
-                        "name": "Daughter of A",
-                        "parent": "Level 2: A"
-                    }
-                ]
-            },
-            {
-                "name": "Level 2: B",
-                "parent": "Top Level"
-            }
-        ]
-    }];
     root = first;
-    root.x0 = childrenCount*20 / 2;
+    root.x0 = childrenCount*30 / 2;
     root.y0 = 0;
     
-    init(300, childrenCount*20);
+    init(300, childrenCount*30);
     
     update(root);
 }
@@ -133,7 +109,7 @@ var margin, i, tree, diagonal, svg, duration, root;
 // ************** Generate the tree diagram	 *****************
 function init(width, height) {
 
-    margin = {top: 20, right: 120, bottom: 20, left: 120};
+    margin = {top: 40, right: 120, bottom: 20, left: 120};
 
     i = 0;
     duration = 750;
@@ -180,10 +156,23 @@ function update(source) {
 
     nodeEnter.append("text")
         .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
-        .attr("dy", ".35em")
+        .attr("y", "-2")
         .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-        .text(function(d) { return d.name; })
-        .style("fill-opacity", 1e-6);
+        .style("fill", function (d) {
+            return "#c97508"
+        })
+        .style("font-size", "13px")
+        .text(function(d) { return d.tableName; });
+    
+    nodeEnter.append("text")
+        .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+        .attr("y", function(d) { return d.tableName ? 10 : 0; })
+        .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+        .style("fill", function (d) {
+            return "#02358c"
+        })
+        .style("font-size", "13px")
+        .text(function(d) { return d.name; });
 
     // Transition nodes to their new position.
     var nodeUpdate = node.transition()
