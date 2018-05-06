@@ -18,17 +18,52 @@ $(document).ready(function () {
 
     sendButton.click(function (q) {
         $("svg").remove();
+        tables.empty();
         var query = queryInput.val();
         getData(query)
             .done(function (data) {
                 //console.log(JSON.stringify(data))
                 //out.text(JSON.stringify(data))
                 drawGraph(data);
-                tables.text(JSON.stringify(data.columns))
+                var nodes = createTableNodes(data.columns);
+                tables.append('<div id="lol"></div>');
+                $("#lol").jstree({
+                    core: {
+                        data: nodes,
+                        themes: {
+                            icons: false
+                        }
+                    },
+                })
             })
     });
 });
 
+function getTableColumns(data) {
+    return data.map(function (x) {
+        return {
+            id: x,
+            text: x
+        }
+    })
+}
+
+function createTableNodes(data) {
+    var array = [];
+    for (var property in data) {
+        if (data.hasOwnProperty(property)) {
+            array.push({
+                id: property,
+                text: property,
+                state: {
+                    opened: true
+                },
+                children: getTableColumns(data[property])
+            })
+        }
+    }
+    return array;
+}
 
 function getDeps(key, array) {
     return array.map(function (x) {

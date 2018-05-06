@@ -11,7 +11,7 @@ body, html {
 .leftSide {
     height: 100%;
     width: 400px;
-    padding: 5px;
+    padding: 55px 5px 5px 5px;
     border-right: #2b669a solid 1px;
     vertical-align: top;
 }
@@ -20,7 +20,7 @@ body, html {
     max-width: 400px;
     width: 400px;
     height: 100%;
-    padding: 5px;
+    padding: 55px 5px 5px 5px;
     border-left: #2b669a solid 1px;
     vertical-align: top;
 }
