@@ -16,6 +16,15 @@ body, html {
     vertical-align: top;
 }
 
+.rightSide {
+    max-width: 400px;
+    width: 400px;
+    height: 100%;
+    padding: 5px;
+    border-left: #2b669a solid 1px;
+    vertical-align: top;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

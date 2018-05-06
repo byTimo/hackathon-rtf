@@ -14,7 +14,7 @@ var childrenCount = 0;
 $(document).ready(function () {
     var sendButton = $("#send_button");
     var queryInput = $("#query_input");
-    var out = $("#out");
+    var tables = $("#tables");
 
     sendButton.click(function (q) {
         $("svg").remove();
@@ -23,7 +23,8 @@ $(document).ready(function () {
             .done(function (data) {
                 //console.log(JSON.stringify(data))
                 //out.text(JSON.stringify(data))
-                drawData(data);
+                drawGraph(data);
+                tables.text(JSON.stringify(data.columns))
             })
     });
 });
@@ -33,7 +34,7 @@ function getDeps(key, array) {
     return array.map(function (x) {
         childrenCount++;
         return {
-            "name": x.TableName + x.Name,
+            "name": x.TableName+ " --> " + x.Name,
             "parent": key
         }
     })
@@ -49,7 +50,7 @@ function getColumns(data) {
     return columns;
 }
 
-function drawData(data) {
+function drawGraph(data) {
     childrenCount = 0;
     var deps = data.dependency;
     
@@ -110,7 +111,7 @@ function init(width, height) {
             return [d.y, d.x];
         });
 
-    svg = d3.select("#out").append("svg")
+    svg = d3.select("#graph").append("svg")
         .attr("width", "100%")
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
